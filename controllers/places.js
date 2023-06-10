@@ -29,6 +29,7 @@ router.get('/', (req, res) => {
 // Make sure to place it after GET /places/new
 // POST /places
 router.post('/', (req, res) => {
+    console.log(req.body)
     res.send('POST /places stub')
 })
 
