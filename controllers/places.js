@@ -27,5 +27,10 @@ router.get('/', (req, res) => {
 
 // In future you would need to add a GET /places/:id route
 // Make sure to place it after GET /places/new
+// POST /places
+router.post('/', (req, res) => {
+    res.send('POST /places stub')
+})
+
 
 module.exports = router
