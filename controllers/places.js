@@ -1,9 +1,10 @@
 const router = require('express').Router()
 
-// // GET /places
-// router.get('/', (req, res) => {
-//     res.render('places/index')
-// })
+// GET /places/new
+router.get('/new', (req, res) => {
+    // Render your new form view here
+    res.render('places/new')
+})
 
 // GET /places
 router.get('/', (req, res) => {
@@ -23,5 +24,8 @@ router.get('/', (req, res) => {
 
     res.render('places/index', { places: places })
 })
+
+// In future you would need to add a GET /places/:id route
+// Make sure to place it after GET /places/new
 
 module.exports = router
