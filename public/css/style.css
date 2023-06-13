@@ -38,3 +38,9 @@ main {
   margin-left: 20px;
   background-color: white;
 }
+
+.place-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}

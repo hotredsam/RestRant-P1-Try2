@@ -1,41 +1,27 @@
 const React = require('react');
 const Def = require('../default');
 
-function show(props) {
+function DeletePage(props) {
     const place = props.place;
+
     return (
         <Def>
             <main>
+                <h1>Delete {place.name}</h1>
                 <div className="place-details">
-                    <h1>{place.name}</h1>
+                    <h2>{place.name}</h2>
                     <img className="place-image" src={place.pic} alt={place.name} />
                     <p><strong>Location:</strong> {place.city}, {place.state}</p>
                     <p><strong>Cuisines:</strong> {place.cuisines.join(", ")}</p>
                 </div>
-                <div className="place-rating">
-                    <h2>Rating</h2>
-                    <p>Currently unrated.</p>
-                </div>
-                <div className="place-comments">
-                    <h2>Comments</h2>
-                    <p>No comments yet!</p>
-                </div>
-                <a href={`/places/${props.id}/edit`} className="btn btn-warning">
-                    Edit
-                </a>
-
                 <form method="POST" action={`/places/${props.id}?_method=DELETE`}>
                     <button type="submit" className="btn btn-danger">
                         Delete
                     </button>
                 </form>
-
-
-
-
             </main>
         </Def>
-    )
+    );
 }
 
-module.exports = show;
+module.exports = DeletePage;

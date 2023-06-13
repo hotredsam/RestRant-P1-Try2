@@ -7,7 +7,7 @@ function home() {
             <main>
                 <h1>HOME</h1>
                 <div>
-                    <img src="./images/placeholder.jpg" alt="Kebob picture" style={{ width: "80%" }} />
+                    <img className="place-image" src="./images/placeholder.jpg" alt="Kebob picture" style={{ width: "80%" }} />
                 </div>
                 <a href="/places">
                     <button className="btn btn-primary">Places Page</button>

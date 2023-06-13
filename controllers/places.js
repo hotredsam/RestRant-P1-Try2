@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const places = require('../models/places.js')
 
+
+
 // GET /places/new
 router.get('/new', (req, res) => {
     // Render your new form view here
@@ -22,9 +24,33 @@ router.get('/:id', (req, res) => {
         res.render('error404')
     }
     else {
-        res.render('places/show', { place: places[id] })  // Pass place data here
+        res.render('places/show', { place: places[id], id })
     }
 })
+
+router.get('/:id/edit', (req, res) => {
+    let id = Number(req.params.id);
+    if (isNaN(id)) {
+        res.render('error404');
+    } else if (!places[id]) {
+        res.render('error404');
+    } else {
+        res.render('places/edit', { place: places[id], id });
+    }
+});
+
+router.delete('/:id', (req, res) => {
+    let id = Number(req.params.id);
+    if (isNaN(id)) {
+        res.render('error404');
+    } else if (!places[id]) {
+        res.render('error404');
+    } else {
+        // Delete the place from the array or database
+        places.splice(id, 1);
+        res.redirect('/places'); // Redirect to the places index page after deletion
+    }
+});
 
 
 
@@ -45,8 +71,11 @@ router.post('/', (req, res) => {
     if (!req.body.state) {
         req.body.state = 'USA'
     }
+    // Split the cuisines string into an array
+    req.body.cuisines = req.body.cuisines.split(',').map(cuisine => cuisine.trim());
     places.push(req.body)
     res.redirect('/places')
 })
+
 
 module.exports = router
