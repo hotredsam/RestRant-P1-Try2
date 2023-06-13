@@ -10,7 +10,7 @@ function show(props) {
                     <h1>{place.name}</h1>
                     <img className="place-image" src={place.pic} alt={place.name} />
                     <p><strong>Location:</strong> {place.city}, {place.state}</p>
-                    <p><strong>Cuisines:</strong> {place.cuisines.join(", ")}</p>
+                    <p><strong>Cuisines:</strong> {Array.isArray(place.cuisines) ? place.cuisines.join(", ") : place.cuisines}</p>
                 </div>
                 <div className="place-rating">
                     <h2>Rating</h2>

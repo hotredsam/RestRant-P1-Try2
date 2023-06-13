@@ -8,7 +8,8 @@ function edit_form(data) {
         <Def>
             <main>
                 <h1>Edit Place</h1>
-                <form method="POST" action={`/places/${place.id}?_method=PUT`}>
+                <form method="POST" action={`/places/${data.id}?_method=PUT`}>
+
                     <div className="row">
                         <div className="form-group col-sm-6">
                             <label htmlFor="name">Place Name</label>
@@ -58,7 +59,7 @@ function edit_form(data) {
                             name="cuisines"
                             placeholder="Enter cuisines separated by commas"
                             required
-                            value={place.cuisines.join(', ')} // Pre-populate with place.cuisines
+                            value={Array.isArray(place.cuisines) ? place.cuisines.join(', ') : place.cuisines} // Pre-populate with place.cuisines
                         />
                     </div>
 
