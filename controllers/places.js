@@ -31,15 +31,15 @@ router.get('/new', (req, res) => {
 
 router.get('/:id', (req, res) => {
     db.Place.findById(req.params.id)
-    .populate('comments')
-    .then(place => {
-        console.log(place.comments)
-        res.render('places/show', { place })
-    })
-    .catch(err => {
-        console.log('err', err)
-        res.render('error404')
-    })
+        .populate('comments')
+        .then(place => {
+            console.log(place.comments)
+            res.render('places/show', { place })
+        })
+        .catch(err => {
+            console.log('err', err)
+            res.render('error404')
+        })
 })
 
 router.put('/:id', (req, res) => {
@@ -55,8 +55,32 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.post('/:id/rant', (req, res) => {
-    res.send('GET /places/:id/rant stub')
+    // Extract data from the form
+    const { author, content, stars, rant } = req.body;
+
+    // Create new comment
+    db.Comment.create({
+        author,
+        content,
+        stars,
+        rant: rant ? true : false,
+    })
+        .then(newComment => {
+            return db.Place.findByIdAndUpdate(
+                req.params.id,
+                { $push: { comments: newComment.id } },
+                { new: true }
+            );
+        })
+        .then(() => {
+            res.redirect(`/places/${req.params.id}`)
+        })
+        .catch(err => {
+            console.log('err', err)
+            res.render('error404')
+        })
 })
+
 
 router.delete('/:id/rant/:rantId', (req, res) => {
     res.send('GET /places/:id/rant/:rantId stub')

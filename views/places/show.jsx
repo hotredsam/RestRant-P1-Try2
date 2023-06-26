@@ -59,6 +59,32 @@ function show(data) {
                         Delete
                     </button>
                 </form>
+                <div className="comment-form">
+                    <h2>Add Comment</h2>
+                    <form action={`/places/${place.id}/rant`} method="POST">
+                        <div class="form-group">
+                            <label for="author">Author:</label>
+                            <input type="text" id="author" name="author" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Content:</label>
+                            <textarea id="content" name="content" class="form-control" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stars">Star Rating:</label>
+                            <input type="number" id="stars" name="stars" min="0" max="5" step="0.5" class="form-control" required />
+                        </div>
+
+                        <div class="form-group form-check">
+                            <input type="checkbox" id="rant" name="rant" class="form-check-input" />
+                            <label class="form-check-label" for="rant">Rant</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </main>
         </Def>
     )

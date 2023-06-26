@@ -44,3 +44,104 @@ main {
   height: 200px;
   object-fit: cover;
 }
+
+/* Add a border around each comment with some padding */
+.border {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+/* Rant comments styling */
+.rant {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+/* Styling for comment author, content and stars */
+.border h4,
+.border h3,
+.border h4 {
+  text-align: left;
+  color: #333;
+}
+
+/* Make sure the comment form is centered and styled appropriately */
+.comment-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.comment-form label {
+  display: block;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.comment-form input,
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form input[type="submit"] {
+  width: 100%;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 14px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.place-rating {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Style the edit and delete buttons */
+.btn-warning,
+.btn-danger {
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-warning {
+  color: #212529;
+  background-color: #ffc107;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.btn-warning:hover,
+.btn-danger:hover {
+  color: #fff;
+}
