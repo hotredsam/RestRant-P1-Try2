@@ -1,8 +1,29 @@
 const React = require('react');
 const Def = require('../default');
 
-function show(props) {
-    const place = props.place;
+function show(data) {
+    let comments = (
+        <h3 className="inactive">
+            No comments yet!
+        </h3>
+    )
+    if (data.place.comments.length) {
+        comments = data.place.comments.map(c => {
+            return (
+                <div className="border">
+                    <h2 className="rant">{c.rant ? 'Rant! ðŸ˜¡' : 'Rave! ðŸ˜»'}</h2>
+                    <h4>{c.content}</h4>
+                    <h3>
+                        <stong>- {c.author}</stong>
+                    </h3>
+                    <h4>Rating: {c.stars}</h4>
+                </div>
+            )
+        })
+    }
+
+    const place = data.place; // Defined here
+
     return (
         <Def>
             <main>
@@ -27,24 +48,20 @@ function show(props) {
                 </h4>
                 <div className="place-comments">
                     <h2>Comments</h2>
-                    <p>No comments yet!</p>
+                    {comments}
                 </div>
-                <a href={`/places/${props.id}/edit`} className="btn btn-warning">
+                <a href={`/places/${place.id}/edit`} className="btn btn-warning">  {/* place.id instead of props.id */}
                     Edit
                 </a>
 
-                <form method="POST" action={`/places/${props.id}?_method=DELETE`}>
+                <form method="POST" action={`/places/${place.id}?_method=DELETE`}>  {/* place.id instead of props.id */}
                     <button type="submit" className="btn btn-danger">
                         Delete
                     </button>
                 </form>
-
-
-
-
             </main>
         </Def>
     )
 }
 
-module.exports = show;
+module.exports = show
