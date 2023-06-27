@@ -79,10 +79,12 @@ function show(data) {
 
                         <div class="form-group form-check">
                             <input type="checkbox" id="rant" name="rant" class="form-check-input" />
-                            <label class="form-check-label" for="rant">Rant</label>
+                            <label class="form-check-label" for="rant">This is a rant</label>
+                            <small id="rantHelp" class="form-text text-muted">Check this box if your comment is a rant rather than a review or compliment.</small>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
+
                     </form>
                 </div>
             </main>

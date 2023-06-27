@@ -145,3 +145,9 @@ main {
 .btn-danger:hover {
   color: #fff;
 }
+
+.form-text {
+  color: #6c757d;
+  /* change this to any color you want */
+  font-size: 0.875em;
+}
